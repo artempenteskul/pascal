@@ -1,8 +1,11 @@
 program hello20_for;
+const 
+    message = 'Hello, world!';
+    times = 20;
 var
     counter: integer;
 begin
-    for counter := 1 to 20 do
-        writeln('hello, world!');
+    for counter := 1 to times do
+        writeln(message);
 end.
 
