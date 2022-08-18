@@ -1,23 +1,23 @@
 program stack;
 
 type
-    longItemPtr = ^longItem;
-    longItem = record
-	data: longint;
-        next: longItemPtr;
-    end;
+    StackOfNumbers = NumberPtr;
 
-type
-    stackOfLongints = longItemPtr;
+type 
+    NumberPtr = ^Number;
+    Number = record
+	data: integer;
+	next: NumberPtr;
 
-procedure SOLInit(var stack: stackOfLongints);
+
+procedure SONInit(var stack: StackOfNumbers);
 begin
     stack := nil;
-end;
+end; 
 
-procedure SOLPush(var stack: stackOfLongints; n: longint);
+procedure SONPush(var stack: StackOfNumbers; n: integer);
 var
-    tmp: longItemPtr;
+   tmp: NumberPtr;
 begin
     new(tmp);
     tmp^.data := n;
@@ -25,47 +25,27 @@ begin
     stack := tmp;
 end;
 
-function SOLPop(var stack: stackOfLongints; var n: longint) : boolean;
+function SONPop(var stack: StackOfNumbers) : boolean;
 var
-    tmp: longItemPtr;
+   tmp: NumberPtr;
 begin
     if stack = nil then
-    begin
-        SOLPop := false;
-        exit
+    begin 
+	SONPop := false;
+	exit
     end;
-    n := stack^.data;
+    else
+    n: stack^.data;
     tmp := stack;
     stack := stack^.next;
     dispose(tmp);
-    SOLPop := true;
+    SONPop := true
 end;
 
-function SOLIsEmpty(var stack: stackOfLongints) : boolean;
+function SONIsEmpty(var stack: StackOfNumbers) : boolean;
 begin
-    SOLIsEmpty := stack = nil;
+    SONIsEmpty := stack = nil;
 end;
-
-begin
-    writeln('Stack interface example');
-end.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

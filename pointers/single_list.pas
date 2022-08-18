@@ -1,9 +1,9 @@
-program singlyLinkedList;
+program single_list;
 
 type
     itemptr = ^item;
-    item = record
-      	data: integer;
+    item = record 
+   	data: integer;
 	next: itemptr;
     end;
 
@@ -16,7 +16,7 @@ begin
     new(first^.next);
     first^.next^.data := 36;
     new(first^.next^.next);
-    first^.next^.next^.data := 49;
-    first^.next^.next^.next := nil;
+    first^.next^.next^.data := 50;
+    first^.next^.next^.next := nil;    
 end.
 
